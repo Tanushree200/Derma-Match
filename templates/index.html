@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare Recommendation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <div class="landing-header">
+            <h1 class="logo">DermaMatch</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <form id="recommendation-form" method="post" action="/recommend">
+            <h2>Choose Your Skin Type</h2>
+            <div class="form-group">
+                <label for="skin-type">Skin Type:</label>
+                <select id="skin-type" name="skin_type">
+                    {% for type in skin_types %}
+                    <option value="{{ type }}">{{ type }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <h2>Select Skin Problems</h2>
+            <div class="form-group">
+                <label>Skin Problems:</label>
+                <div id="skin-problems" class="tab-container">
+                    {% for problem in skin_problems %}
+                    <div class="tab-option">
+                        <label>
+                            <input type="checkbox" name="skin_problems" value="{{ problem }}"> {{ problem }}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <h2>Select Ingredients to Avoid</h2>
+            <div class="form-group">
+                <label>Ingredients:</label>
+                <div id="ingredients" class="tab-container">
+                    {% for ingredient in skincare_ingredients_info.keys() %}
+                    <div class="tab-option">
+                        <label>
+                            <input type="checkbox" name="avoid_ingredients" value="{{ ingredient }}"> {{ ingredient }}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Get Recommendations</button>
+        </form>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Skincare Recommendation System</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabOptions = document.querySelectorAll('.tab-option');
+
+            tabOptions.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    const checkbox = tab.querySelector('input');
+
+                    // Toggle checkbox state
+                    checkbox.checked = !checkbox.checked;
+
+                    // Add or remove the 'selected' class based on checkbox state
+                    if (checkbox.checked) {
+                        tab.classList.add('selected'); // Highlight the tab
+                    } else {
+                        tab.classList.remove('selected'); // Remove the highlight
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

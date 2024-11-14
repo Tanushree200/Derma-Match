@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Dermamatch</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles1.css') }}">
+</head>
+<body class="landing-body">
+     <!-- Header -->
+     <header class="landing-header">
+        <div class="logo">Dermamatch</div>
+    </header>
+    <div class="landing-overlay">
+        <div class="landing-container">
+            <h1>Welcome to Dermamatch</h1>
+            <p>Your personalized skincare companion, designed to understand and cater to your skin's unique needs. Discover recommendations crafted just for you, to bring out the best in your skin.</p>
+
+            <div class="features">
+                <div class="feature">
+                    <h2>Personalized Skin Analysis</h2>
+                    <p>Get tailored suggestions based on your skin type, whether oily, dry, sensitive, or combination.</p>
+                </div>
+                <div class="feature">
+                    <h2>Targeted Solutions</h2>
+                    <p>Address your specific concerns—from acne and dryness to anti-aging and beyond.</p>
+                </div>
+                <div class="feature">
+                    <h2>Custom Ingredient Filters</h2>
+                    <p>Avoid ingredients you’re sensitive to and embrace those that truly work for your skin.</p>
+                </div>
+            </div>
+
+            <p>Join us on this journey to radiant, healthy skin.</p>
+            <a href="{{ url_for('index') }}" class="get-started-btn">Get Started</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles2.css') }}">
+</head>
+<body>
+    <!-- Dark Overlay -->
+    <div class="bg-overlay"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="landing-header">
+            <h1 class="logo">DermaMatch</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="content-container">
+        <!-- Skincare Recommendations Section -->
+        <div class="recommendations-container">
+            <h2>Your Personalized Skincare Recommendations</h2>
+            {% for problem, ingredients in recommendations.items() %}
+                <div class="skin-problem">
+                    <h3>{{ problem | capitalize }}:</h3>
+                    <ul>
+                        {% for ingredient in ingredients %}
+                            <li>
+                                <strong>{{ ingredient }}</strong>
+                                <ul>
+                                    <li><span class="label">Rating:</span> {{ skincare_ingredients_info[ingredient]["ratings"].get(problem, 'N/A') }}</li>
+                                    <li><span class="label">Instructions:</span> {{ skincare_ingredients_info[ingredient]["instructions"] }}</li>
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Skincare Routine Section -->
+        <div class="routine-container">
+            <h2>Your Skincare Routine</h2>
+            {% for form, ingredients in skincare_routine.items() %}
+                <div class="routine-form">
+                    <h3>{{ form | capitalize }}:</h3>
+                    <ul>
+                        {% for ingredient in ingredients %}
+                            <li>{{ ingredient }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+
+            <!-- Add Sunscreen at the End of Routine -->
+            <div class="routine-form">
+                <h3>Sunscreen:</h3>
+                <ul>
+                    <li>Sunscreen SPF 50 PA++</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Skincare Recommendation System</p>
+        </div>
+    </footer>
+</body>
+</html>
