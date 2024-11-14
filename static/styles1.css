@@ -1,26 +1,34 @@
+/* Ensure body and html fill the full viewport */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling */
+}
+
 /* Landing page body styles */
 .landing-header {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 10px 20px; /* Reduced padding */
-    background: rgba(0, 0, 0, 0.8); /* Semi-transparent */
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.5);
     color: #f0efe9;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center-align content */
-    z-index: 10;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
 }
 
-.landing-header h1 {
+.landing-header .logo {
     font-size: 2em;
     font-weight: bold;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif; /* Modern font */
     text-transform: uppercase;
-    margin: 0;
+    letter-spacing: 2px;
 }
+
 /* Body styles */
 .landing-body {
     font-family: 'Poppins', Arial, sans-serif; /* Sleek font for body text */
@@ -29,46 +37,52 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100vh; /* Full viewport height */
     margin: 0;
     padding: 0;
     color: #fff;
     text-align: center;
+    overflow: hidden; /* Prevent scrolling */
 }
 
 /* Overlay */
 .landing-overlay {
     background: rgba(0, 0, 0, 0.7); /* Darker overlay for better text contrast */
+    position: fixed; /* Fixed position to cover the entire viewport */
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 5;
 }
 
 /* Main Container */
 .landing-container {
     background: rgba(255, 255, 255, 0.15); /* Semi-transparent for a sleek look */
-    padding: 80px; /* Spacious padding */
+    padding: 40px; /* Adjusted padding for responsiveness */
     border-radius: 16px; /* Softer corners */
     max-width: 1000px; /* Larger container */
     width: 90%; /* Responsive width */
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1.5s ease-in-out;
-    
+    overflow: hidden; /* Ensure no overflow */
 }
 
 /* Heading */
 .landing-container h1 {
-    font-size: 5rem; /* Huge, single-line title */
+    font-size: 4rem; /* Adjusted for responsiveness */
     font-weight: bold;
     letter-spacing: 2px;
     margin-bottom: 30px;
     color: #f7f7f7;
     text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5); /* Add depth */
 }
+
 .landing-container p {
-    font-size: 1.3rem; /* Huge, single-line title */
+    font-size: 1.2rem; /* Adjusted for readability */
     letter-spacing: 2px;
     margin-bottom: 30px;
     color: #f7f7f7;
